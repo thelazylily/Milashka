@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Милашки 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #fff5f9;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-hearts {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-heart {
+    position: absolute;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0%   { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    10%  { opacity: 0.3; }
+    90%  { opacity: 0.2; }
+    100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem 1rem;
+  }
+
+  .spin {
+    font-size: 3.5rem;
+    display: inline-block;
+    animation: spin 7s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    color: #f472b6;
+    margin: 0.3rem 0 0.1rem;
+    text-shadow: 3px 3px 0px #fce7f3;
+  }
+
+  .sub {
+    font-size: 1.1rem;
+    color: #c084a8;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .divider {
+    font-size: 1.5rem;
+    margin: 0.8rem 0 1.5rem;
+    letter-spacing: 8px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1.2rem;
+    max-width: 840px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card {
+    background: white;
+    border-radius: 28px;
+    padding: 1.7rem 1.2rem;
+    text-align: center;
+    box-shadow: 0 6px 22px rgba(244, 114, 182, 0.13);
+    border: 2px solid transparent;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  }
+
+  .card:hover {
+    transform: translateY(-8px) rotate(1.5deg);
+    box-shadow: 0 16px 36px rgba(244, 114, 182, 0.22);
+    border-color: #fce7f3;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.1s; }
+  .card:nth-child(2) { animation-delay: 0.2s; }
+  .card:nth-child(3) { animation-delay: 0.3s; }
+  .card:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.5) translateY(30px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .card-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.6rem; }
+
+  .card h2 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #e879a8;
+    margin-bottom: 0.4rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: #b07898;
+    line-height: 1.6;
+  }
+
+  .love-section {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .love-box {
+    background: white;
+    border-radius: 36px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(244, 114, 182, 0.14);
+    border: 2.5px solid #fce7f3;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .love-box::before {
+    content: '💝';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.05;
+    top: -15px; right: -15px;
+    pointer-events: none;
+  }
+
+  .love-box::after {
+    content: '🌸';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.05;
+    bottom: -15px; left: -15px;
+    pointer-events: none;
+  }
+
+  .love-box h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.6rem;
+    color: #f472b6;
+    margin-bottom: 1rem;
+  }
+
+  .love-box p { font-size: 1.05rem; color: #9a6888; line-height: 1.9; }
+  .love-box p span { color: #f472b6; font-weight: 800; }
+
+  .msg2 {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .msg2-box {
+    background: linear-gradient(135deg, #fff0f7, #fce7f3);
+    border-radius: 36px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(244, 114, 182, 0.1);
+    border: 2px solid #fbcfe8;
+    text-align: center;
+  }
+
+  .msg2-box p { font-size: 1.05rem; color: #9a6888; line-height: 1.9; }
+  .msg2-box p span { color: #f472b6; font-weight: 800; }
+
+  .pulse-hearts {
+    text-align: center;
+    font-size: 1.9rem;
+    letter-spacing: 6px;
+    position: relative;
+    z-index: 1;
+    animation: pulse 2s ease-in-out infinite;
+    margin-bottom: 1.5rem;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .photos-section {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .photos-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    color: #f472b6;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .photo-item {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 6px 22px rgba(244, 114, 182, 0.18);
+    border: 3px solid #fce7f3;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    cursor: pointer;
+  }
+
+  .photo-item:hover {
+    transform: scale(1.05) rotate(-1.5deg);
+    box-shadow: 0 14px 36px rgba(244, 114, 182, 0.3);
+  }
+
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 230, 245, 0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(244, 114, 182, 0.35);
+    border: 4px solid white;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(244, 114, 182, 0.3);
+    color: #f472b6;
+    font-weight: 800;
+    transition: transform 0.2s;
+  }
+
+  .lightbox-close:hover { transform: scale(1.15) rotate(10deg); }
+
+  /* Buttons */
+  .btn-wrap {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #f472b6, #fb7185);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(244, 114, 182, 0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 32px rgba(244, 114, 182, 0.55);
+  }
+
+  .btn.secondary {
+    background: white;
+    color: #f472b6;
+    border: 2.5px solid #f9a8d4;
+    box-shadow: 0 6px 20px rgba(244, 114, 182, 0.15);
+  }
+
+  .conf-wrap {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 998;
+  }
+
+  .conf {
+    position: absolute;
+    opacity: 0;
+    animation: confFall linear forwards;
+  }
+
+  @keyframes confFall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 1rem 1.5rem 2rem;
+    color: #d4a0c0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-hearts" id="bgHearts"></div>
+<div class="conf-wrap" id="confetti"></div>
+
+<section class="hero">
+  <div class="spin">🌸</div>
+  <h1>Милашка</h1>
+  <p class="sub">самый милый человечек на свете 🎀</p>
+  <div class="divider">💗 💕 💗</div>
+</section>
+
+<div class="cards">
+  <div class="card">
+    <span class="card-emoji">🌷</span>
+    <h2>Ты такой милый</h2>
+    <p>Рядом с тобой всё становится теплее и радостнее!</p>
+  </div>
+  <div class="card">
+    <span class="card-emoji">✨</span>
+    <h2>Ты сияешь</h2>
+    <p>Куда бы ты ни пришёл, сразу становится светлее.</p>
+  </div>
+  <div class="card">
+    <span class="card-emoji">🍓</span>
+    <h2>Ты единственный</h2>
+    <p>Ты самый лучий!</p>
+  </div>
+  <div class="card">
+    <span class="card-emoji">🎀</span>
+    <h2>Просто потому что</h2>
+    <p>Ты заслуживаешь улыбки каждый день, без повода!</p>
+  </div>
+</div>
+
+<div class="love-section">
+  <div class="love-box">
+    <h3>Mилашка 💗</h3>
+    <p>
+      Этот маленький сайт сделан <span>специально для тебя</span> —
+      просто чтобы напомнить, какой ты тёплый и особенный.
+      Ты делаешь всё вокруг лучше просто тем, что существуешь. 🌸
+    </p>
+  </div>
+</div>
+
+<div class="msg2">
+  <div class="msg2-box">
+    <p>
+      Не забывай улыбаться 😊 Ты <span>любим</span>,
+      ты <span>важен</span>, и ты <span>потрясающий</span> —
+      сегодня, завтра и всегда. 💕
+    </p>
+  </div>
+</div>
+
+<div class="pulse-hearts">💗 💖 💗</div>
+
+<div class="btn-wrap">
+  <button class="btn" onclick="launchConfetti()">🎊 Обнять Милашку!</button>
+  <button class="btn secondary" onclick="togglePhotos()">📸 Meow 💕</button>
+</div>
+
+<!-- PHOTOS SECTION -->
+<div class="photos-section" id="photosSection" style="display:none;">
+  <p class="photos-title">Наши моменты 💗</p>
+  <div class="photos-grid" id="photosGrid"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="photo">
+</div>
+
+<div class="footer">Сделано с любовью 💗 специально для тебя</div>
+
+<script>
+
+  const photos = [
+    "photos/photo1.png",
+    "photos/photo2.png",
+    "photos/photo3.png",
+  
+  ];
+
+  const bgHearts = document.getElementById('bgHearts');
+  const emojis = ['💗','💕','🌸','✨','🌷','💖','🎀','💝','🍓'];
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    el.className = 'bg-heart';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = (Math.random() * 100) + '%';
+    el.style.fontSize = (0.8 + Math.random() * 1.3) + 'rem';
+    el.style.animationDuration = (9 + Math.random() * 10) + 's';
+    el.style.animationDelay = (Math.random() * 12) + 's';
+    bgHearts.appendChild(el);
+  }
+
+  let photosLoaded = false;
+  function togglePhotos() {
+    const section = document.getElementById('photosSection');
+    const isHidden = section.style.display === 'none';
+    section.style.display = isHidden ? 'block' : 'none';
+
+    if (isHidden && !photosLoaded) {
+      const grid = document.getElementById('photosGrid');
+      photos.forEach((src, i) => {
+        const div = document.createElement('div');
+        div.className = 'photo-item';
+        div.style.animationDelay = (i * 0.1) + 's';
+        div.onclick = () => openLightbox(src);
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Наше фото ' + (i + 1);
+        div.appendChild(img);
+        grid.appendChild(div);
+      });
+      photosLoaded = true;
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  // Confetti
+  function launchConfetti() {
+    const container = document.getElementById('confetti');
+    container.innerHTML = '';
+    const colors = ['#f472b6','#fb7185','#fce7f3','#c084fc','#fbbf24','#a78bfa','#f9a8d4'];
+    const shapes = ['●','★','♥','◆','✿','•'];
+    for (let i = 0; i < 100; i++) {
+      const el = document.createElement('div');
+      el.className = 'conf';
+      el.style.left = Math.random() * 100 + '%';
+      el.style.color = colors[Math.floor(Math.random() * colors.length)];
+      el.style.fontSize = (8 + Math.random() * 14) + 'px';
+      el.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+      el.style.animationDelay = (Math.random() * 1.5) + 's';
+      el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+      container.appendChild(el);
+    }
+    setTimeout(() => container.innerHTML = '', 6000);
+  }
+
+  launchConfetti();
+</script>
+</body>
+</html>  
